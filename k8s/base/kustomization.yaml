@@ -12,3 +12,7 @@ resources:
   - postgres-deployment.yaml
   - minio-deployment.yaml
   - ingress.yaml
+  - user-service-deployment.yaml
+  - message-service-deployment.yaml
+  - bff-deployment.yaml
+  - frontend-deployment.yaml 
