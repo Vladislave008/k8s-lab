@@ -15,4 +15,8 @@ resources:
   - user-service-deployment.yaml
   - message-service-deployment.yaml
   - bff-deployment.yaml
-  - frontend-deployment.yaml 
+  - frontend-deployment.yaml
+  - users-migrations-cm.yaml
+  - messages-migrations-cm.yaml
+  - migrate-users-job.yaml
+  - migrate-messages-job.yaml

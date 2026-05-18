@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: create-bucket
+  namespace: messager-team
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:

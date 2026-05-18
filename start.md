@@ -14,6 +14,7 @@ kubectl get pods -n kube-system | Select-String "csi-s3"
 
 kubectl create namespace messager-team
 
+kubectl apply -f k8s/base/secret.yaml 
 kubectl apply -f k8s/base/csi-s3-secret.yaml 
 kubectl apply -f k8s/base/csi-s3-secret-system.yaml
 
