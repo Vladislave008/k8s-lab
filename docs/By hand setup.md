@@ -41,21 +41,8 @@ kubectl apply -f k8s/base/csi-s3-secret-system.yaml
 kubectl apply -k k8s/base/
 kubectl get pods -n messager-team
 ```
-*Дождаться запуска всех подов*
-```
-kubectl apply -f k8s/base/users-migrations-cm.yaml
-kubectl apply -f k8s/base/messages-migrations-cm.yaml
-kubectl apply -f k8s/base/migrate-users-job.yaml
-kubectl apply -f k8s/base/migrate-messages-job.yaml
-```
-*Дождаться выполнения миграций. Ошибки миграций и способы решения рассмотрены ниже*
-```
-kubectl apply -f k8s/base/user-service-deployment.yaml
-kubectl apply -f k8s/base/message-service-deployment.yaml
-kubectl apply -f k8s/base/bff-deployment.yaml
-kubectl apply -f k8s/base/frontend-deployment.yaml
-```
-*Дождаться запуска всех деплойментов*
+
+*Дождаться запуска всех деплойментов. Ошибки миграций и методы их решения описаны ниже*
 
 В отдельной консоли:
 ```
