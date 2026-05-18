@@ -6,21 +6,9 @@ resources:
 
 patches:
   - path: patches/resources.yaml
-    target:
-      kind: Deployment
-      name: .*
   - path: patches/affinity.yaml
-    target:
-      kind: Deployment
-      name: .*
   - path: patches/storage.yaml
-    target:
-      kind: PersistentVolumeClaim
-      name: .*
   - path: patches/ingress-host.yaml
-    target:
-      kind: Ingress
-      name: .*
 
 replicas:
   - name: user-service

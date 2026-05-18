@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Vladislave008/k8s-lab
+    repoURL: https://github.com/Vladislave008/k8s-lab.git
     targetRevision: main
     path: k8s/overlays/dev
   destination:
@@ -18,3 +18,5 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - ServerSideApply=true
+      - Timeout=300s
