@@ -6,7 +6,6 @@ metadata:
 spec:
   template:
     spec:
-      $patch: replace
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
