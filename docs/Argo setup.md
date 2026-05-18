@@ -39,11 +39,17 @@ kubectl delete pod -n argocd -l app.kubernetes.io/component=redis
 ```
 
 ## Открыть доступ к ArgoCD по адресу https://localhost:8443/
+```
 kubectl port-forward svc/argocd-server -n argocd 8443:443
+```
 
 ## Получить пароль для ArgoCD и войти
+```
 $password = kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}"
 [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($password))
+```
 
 ## Применить сборку
+```
 kubectl apply -f argocd/application.yaml
+```
