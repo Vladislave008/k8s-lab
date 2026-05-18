@@ -6,7 +6,6 @@ resources:
   - create-bucket-job.yaml
   - namespace.yaml
   - configmap.yaml
-  - secret.yaml
   - postgres-pvc.yaml
   - minio-pvc.yaml
   - message-uploads-pvc.yaml
