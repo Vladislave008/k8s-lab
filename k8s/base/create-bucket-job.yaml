@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-bucket
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  backoffLimit: 5
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: create-bucket
+          image: minio/mc:latest
+          command:
+            - sh
+            - -c
+            - |
+              echo "Waiting for MinIO to be ready..."
+              until mc alias set local http://minio-service:9000 minioadmin minioadmin 2>/dev/null; do
+                echo "MinIO not ready yet, retrying in 5s..."
+                sleep 5
+              done
+              echo "MinIO is ready, creating bucket..."
+              mc mb --ignore-existing local/messager-uploads
+              echo "Bucket created successfully!"

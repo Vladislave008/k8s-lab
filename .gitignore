@@ -1,0 +1,39 @@
+# Secrets
+**/csi-s3-secret.yaml
+**/csi-s3-secret-system.yaml
+**/secret.yaml
+
+# Minikube artifacts
+.minikube/
+minikube*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.bak
+*.log
+
+# Helm
+**/charts/
+**/Chart.lock
+
+# Kubeconfig
+kubeconfig
+.kubeconfig
+
+# Terraform (если есть)
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Argo CD local config
+argocd/config

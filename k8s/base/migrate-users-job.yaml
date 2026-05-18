@@ -1,0 +1,49 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migrate-users
+  namespace: messager-team
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: Never
+      initContainers:
+        - name: wait-for-postgres
+          image: postgres:16-alpine
+          command:
+            - sh
+            - -c
+            - |
+              until pg_isready -h postgres-service -U admin -d messager-db; do
+                echo "Waiting for postgres..."
+                sleep 2
+              done
+          env:
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: messager-secret
+                  key: POSTGRES_PASSWORD
+      containers:
+        - name: migrate-users
+          image: kukymbr/goose-docker:latest
+          env:
+            - name: GOOSE_DRIVER
+              value: "postgres"
+            - name: GOOSE_DBSTRING
+              valueFrom:
+                secretKeyRef:
+                  name: messager-secret
+                  key: USER_DB_DSN
+            - name: GOOSE_MIGRATION_DIR
+              value: "/migrations"
+          volumeMounts:
+            - name: migrations
+              mountPath: /migrations
+      volumes:
+        - name: migrations
+          configMap:
+            name: users-migrations-cm

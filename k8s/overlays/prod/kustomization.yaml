@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../../base
+
+replicas:
+  - name: user-service
+    count: 3
+  - name: message-service
+    count: 3
+  - name: bff
+    count: 3
+  - name: frontend
+    count: 2
+
+images:
+  - name: mablinov2704/user-service
+    newTag: stable
+  - name: mablinov2704/message-service
+    newTag: stable
+  - name: mablinov2704/bff
+    newTag: stable
+  - name: mablinov2704/frontend
+    newTag: stable
+
+patchesStrategicMerge:
+  - patches/resources.yaml
+  - patches/affinity.yaml
+  - patches/storage.yaml
+  - patches/ingress-host.yaml
