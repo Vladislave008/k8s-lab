@@ -14,3 +14,9 @@
 ![S3-PV связан с PVC](./images/pv-pvc.png)
 ## NodeAffinity работает:
 ![NodeAffinity работает](./images/affinity.png)
+
+# ArgoCD
+## Synced & Heathy
+![Synced & Healthy](./images/argo_synced.png)
+## Stats
+![Synced & Healthy](./images/argo_stats.png)
